@@ -50,7 +50,6 @@
   <ItemGroup>
     <Compile Include="BillTests.cs" />
     <Compile Include="CheckoutTransactionTests.cs" />
-    <Compile Include="DiscountQuantityLineItemTests.cs" />
     <Compile Include="QuantityDiscountTests.cs" />
     <Compile Include="RegularPriceLineItemTests.cs" />
     <Compile Include="ProductCatalogTests.cs" />
