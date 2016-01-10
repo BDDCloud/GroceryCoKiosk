@@ -23,11 +23,11 @@ namespace GroceryCo.Kiosk.Core.Unit.Tests
             var sut = new Bill(new List<string>() { "apple", "banana", "apple" }, productCatalog);
 
             Assert.That(sut.Total, Is.EqualTo(2.50m));
-            Assert.That(sut.RegularPricedLineItems.Count(), Is.EqualTo(2));
-            Assert.That(sut.RegularPricedLineItems.ElementAt(0).Barcode, Is.EqualTo("apple"));
-            Assert.That(sut.RegularPricedLineItems.ElementAt(0).SubTotal, Is.EqualTo(1.50m));
-            Assert.That(sut.RegularPricedLineItems.ElementAt(1).Barcode, Is.EqualTo("banana"));
-            Assert.That(sut.RegularPricedLineItems.ElementAt(1).SubTotal, Is.EqualTo(1.00m));
+            Assert.That(sut.LineItems.Count(), Is.EqualTo(2));
+            Assert.That(sut.LineItems.ElementAt(0).Barcode, Is.EqualTo("apple"));
+            Assert.That(sut.LineItems.ElementAt(0).SubTotal, Is.EqualTo(1.50m));
+            Assert.That(sut.LineItems.ElementAt(1).Barcode, Is.EqualTo("banana"));
+            Assert.That(sut.LineItems.ElementAt(1).SubTotal, Is.EqualTo(1.00m));
         }
 
         [Test]
@@ -40,8 +40,7 @@ namespace GroceryCo.Kiosk.Core.Unit.Tests
             var sut = new Bill(new List<string>() { "apple", "banana", "apple", "apple", "apple", "apple" }, productCatalog);
 
             Assert.That(sut.Total, Is.EqualTo(5.75m));
-            Assert.That(sut.RegularPricedLineItems.Count(), Is.EqualTo(2));
-            Assert.That(sut.QuantityDiscountLineItems.Count(), Is.EqualTo(1));
+            Assert.That(sut.LineItems.Count(), Is.EqualTo(2));
         }
 
         [Test]
@@ -54,8 +53,7 @@ namespace GroceryCo.Kiosk.Core.Unit.Tests
             var sut = new Bill(new List<string>() { "banana" }, productCatalog);
 
             Assert.That(sut.Total, Is.EqualTo(1.00m));
-            Assert.That(sut.RegularPricedLineItems.Count(), Is.EqualTo(1));
-            Assert.That(sut.QuantityDiscountLineItems.Count(), Is.EqualTo(0));
+            Assert.That(sut.LineItems.Count(), Is.EqualTo(1));
         }
 
         [Test]
@@ -68,9 +66,9 @@ namespace GroceryCo.Kiosk.Core.Unit.Tests
             var sut = new Bill(new List<string>() { "apple", "banana", "apple", "apple", "apple", "apple" }, productCatalog);
 
             Assert.That(sut.Total, Is.EqualTo(3.25m));
-            Assert.That(sut.RegularPricedLineItems.Count(), Is.EqualTo(2));
-            Assert.That(sut.RegularPricedLineItems.ElementAt(0).Price, Is.EqualTo(0.75m));
-            Assert.That(sut.RegularPricedLineItems.ElementAt(0).Note, Is.EqualTo("***Discount on apple: Buy 1 apple get 1 at $0.00, New Price $2.25, Savings $1.50"));
+            Assert.That(sut.LineItems.Count(), Is.EqualTo(2));
+            Assert.That(sut.LineItems.ElementAt(0).Price, Is.EqualTo(0.75m));
+            Assert.That(sut.LineItems.ElementAt(0).Note, Is.EqualTo("***Discount on apple: Buy 1 apple get 1 at $0.00, New Price $2.25, Savings $1.50"));
         }
     }
 }

@@ -47,7 +47,7 @@ namespace GroceryCo.Kiosk.Console.Unit.Tests
             transaction.AddItem("apple");
 
             var actual = sut.Generate(transaction);
-            Assert.That(actual, Is.EqualTo("Receipt:\n6 apple for 3 @ $2.00 is $4.00\n1 apple @ $0.75 is $0.75\n1 banana @ $1.00 is $1.00\nTotal is $5.75"));
+            Assert.That(actual, Is.EqualTo("Receipt:\n7 apple @ $0.75 is $5.25\n***Discount on apple: Buy 3 apple for $2.00, New Price $4.75, Savings $0.50\n1 banana @ $1.00 is $1.00\nTotal is $5.75"));
         }
 
         [Test]

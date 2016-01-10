@@ -23,14 +23,31 @@ namespace GroceryCo.Kiosk.Core
         {
             Price = _productCatalog.Products.Single(p => p.Barcode == Barcode).Price;
             SubTotal = Price * Quantity;
+            DiscountedSubTotal = SubTotal;
+            DiscountedSubTotal = CalculateQuantityDiscount();
             DiscountedSubTotal = CalculateAdditionalItemDiscount();
+        }
+
+        private decimal CalculateQuantityDiscount()
+        {
+            var discount = _productCatalog.QuantityDiscounts.SingleOrDefault(d => d.Barcode == Barcode);
+            var hasDiscount = discount != null;
+            var price = DiscountedSubTotal;
+            if (hasDiscount)
+            {
+                var applicableQuantity = Quantity/discount.DiscountQuantity;
+                price = applicableQuantity*discount.DiscountPrice + (Quantity - applicableQuantity * discount.DiscountQuantity)*Price;
+                Note = $"***Discount on {Barcode}: Buy {discount.DiscountQuantity} {Barcode} for {discount.DiscountPrice:C2}, New Price {price:C2}, Savings {(SubTotal - price):C2}";
+            }
+
+            return price;
         }
 
         private decimal CalculateAdditionalItemDiscount()
         {
             var discount = _productCatalog.AdditionalItemDiscounts.SingleOrDefault(d => d.Barcode == Barcode);
             var hasDiscount = discount != null;
-            var price = SubTotal;
+            var price = DiscountedSubTotal;
             if (hasDiscount)
             {
                 var discountPriceCount = Quantity / (discount.QuantityFullPrice + discount.QuantityDiscounted) * discount.QuantityDiscounted;

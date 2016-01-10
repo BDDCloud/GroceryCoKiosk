@@ -32,7 +32,7 @@ namespace GroceryCo.Kiosk.Acceptance.Tests.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Checkout with items with quantity discount", "In order to improve sales\nAs the business\nI want to have quantity discounts", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Checkout with items with quantity discount", "In order to improve sales\r\nAs the business\r\nI want to have quantity discounts", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -125,9 +125,9 @@ this.ScenarioSetup(scenarioInfo);
             table4.AddRow(new string[] {
                         "Receipt:"});
             table4.AddRow(new string[] {
-                        "6 apple for 3 @ $2.00 is $4.00"});
+                        "7 apple @ $0.75 is $5.25"});
             table4.AddRow(new string[] {
-                        "1 apple @ $0.75 is $0.75"});
+                        "***Discount on apple: Buy 3 apple for $2.00, New Price $4.75, Savings $0.50"});
             table4.AddRow(new string[] {
                         "1 banana @ $1.00 is $1.00"});
             table4.AddRow(new string[] {
