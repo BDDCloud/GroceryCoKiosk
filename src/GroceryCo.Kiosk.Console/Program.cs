@@ -14,7 +14,7 @@ namespace GroceryCo.Kiosk.Console
         {
             var cartFile = args[0];
             var productCatalogFile = args[1];
-            
+
             var bootstrap = new CheckoutBootStrap(File.ReadAllLines(cartFile), File.ReadAllLines(productCatalogFile), new ConsoleWriter());
             bootstrap.Begin();
         }

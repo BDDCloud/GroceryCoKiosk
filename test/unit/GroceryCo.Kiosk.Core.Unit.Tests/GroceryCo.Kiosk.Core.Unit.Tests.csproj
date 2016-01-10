@@ -50,9 +50,11 @@
   <ItemGroup>
     <Compile Include="BillTests.cs" />
     <Compile Include="CheckoutTransactionTests.cs" />
-    <Compile Include="ProductSummaryLineItemTests.cs" />
+    <Compile Include="DiscountQuantityLineItemTests.cs" />
+    <Compile Include="RegularPriceLineItemTests.cs" />
     <Compile Include="ProductCatalogTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuantityDiscountTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

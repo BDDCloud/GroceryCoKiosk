@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,7 @@ namespace GroceryCo.Kiosk.Core
         }
 
         public Bill Bill { get; private set; }
+        public IEnumerable<string> Items => _items;
 
         public void AddItem(string barcode)
         {

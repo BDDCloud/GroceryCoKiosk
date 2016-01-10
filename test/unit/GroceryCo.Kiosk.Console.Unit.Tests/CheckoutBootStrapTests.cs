@@ -33,6 +33,19 @@ namespace GroceryCo.Kiosk.Console.Unit.Tests
             Assert.That(consoleWriter.Output, Is.EqualTo("Receipt:\n2 apple @ $0.75 is $1.50\n1 banana @ $1.00 is $1.00\nTotal is $2.50"));
         }
 
+        [Test]
+        public void When_items_in_cart_and_product_catalog_with_quantity_discount()
+        {
+            var consoleWriter = new MockConsoleWriter();
+            var cartData = new List<string>() { "apple", "banana", "apple", "apple", "apple", "apple", "apple", "apple" };
+            var productCatalogData = new List<string>() { "PRODUCT, apple, 0.75", "PRODUCT, banana, 1.00", "QUANTITY_DISCOUNT, apple, 3, 2.00"};
+            var sut = new CheckoutBootStrap(cartData, productCatalogData, consoleWriter);
+
+            sut.Begin();
+
+            Assert.That(consoleWriter.Output, Is.EqualTo("Receipt:\n6 apple for 3 @ $2.00 is $4.00\n1 apple @ $0.75 is $0.75\n1 banana @ $1.00 is $1.00\nTotal is $5.75"));
+        }
+
         public class MockConsoleWriter : IConsoleWriter
         {
             public void WriteLine(string line)

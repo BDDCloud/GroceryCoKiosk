@@ -28,6 +28,7 @@ namespace GroceryCo.Kiosk.Acceptance.Tests.Steps
         private string CreateProductCatalogFile()
         {
             var filename = GenerateRandomFilename();
+            File.WriteAllText(filename, "");
             CreateProducts(filename);
             CreateQuantityPromotions(filename);
             CreateAdditionItemPromotions(filename);
@@ -43,7 +44,7 @@ namespace GroceryCo.Kiosk.Acceptance.Tests.Steps
         {
             foreach (var promotion in AdditionalItemPromotions)
             {
-                File.WriteAllText(filename, $"ADDITIONAL_ITEM_DISCOUNT, #{promotion.Barcode}, #{promotion.BuyQuantity}, #{promotion.HowManyFree}");
+                File.AppendAllText(filename, $"ADDITIONAL_ITEM_DISCOUNT, {promotion.Barcode}, {promotion.BuyQuantity}, {promotion.HowManyFree}\n");
             }
         }
 
@@ -51,7 +52,7 @@ namespace GroceryCo.Kiosk.Acceptance.Tests.Steps
         {
             foreach (var promotion in QuantityPromotions)
             {
-                File.AppendAllText(filename, $"QUANTITY_DISCOUNT, {promotion.Barcode}, {promotion.DiscountQuantity}, #{promotion.DiscountPrice}\n");
+                File.AppendAllText(filename, $"QUANTITY_DISCOUNT, {promotion.Barcode}, {promotion.DiscountQuantity}, {promotion.DiscountPrice}\n");
             }
         }
 

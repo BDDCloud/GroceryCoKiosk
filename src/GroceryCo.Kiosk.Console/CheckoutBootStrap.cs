@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using GroceryCo.Kiosk.Core;
 
@@ -30,9 +31,19 @@ namespace GroceryCo.Kiosk.Console
             foreach (var productCatalogLine in _productCatalogData)
             {
                 var parts = productCatalogLine.Split(',');
-                var barcode = parts[1].Trim();
-                var price = Decimal.Parse(parts[2]);
-                productCatalog.AddProduct(barcode, price);
+                if (parts[0] == "PRODUCT")
+                {
+                    var barcode = parts[1].Trim();
+                    var price = Decimal.Parse(parts[2]);
+                    productCatalog.AddProduct(barcode, price);
+                }
+                else if (parts[0] == "QUANTITY_DISCOUNT")
+                {
+                    var barcode = parts[1].Trim();
+                    var quantity = Convert.ToInt32(parts[2]);
+                    var discountPrice = Convert.ToDecimal(parts[3]);
+                    productCatalog.AddQuantityDiscount(barcode, quantity, discountPrice);
+                }
             }
 
             var transaction = new CheckoutTransaction(productCatalog);

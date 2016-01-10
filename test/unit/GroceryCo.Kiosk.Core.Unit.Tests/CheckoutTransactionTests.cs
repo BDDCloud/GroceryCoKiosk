@@ -22,6 +22,7 @@ namespace GroceryCo.Kiosk.Core.Unit.Tests
         [Test]
         public void When_add_some_items()
         {
+            var expected = new List<string>() { "apple", "banana", "apple" };
             var productCatalog = new ProductCatalog();
             productCatalog.AddProduct("apple", 0.75m);
             productCatalog.AddProduct("banana", 1.00m);
@@ -31,6 +32,7 @@ namespace GroceryCo.Kiosk.Core.Unit.Tests
             sut.AddItem("apple");
 
             Assert.That(sut.Bill.Total, Is.EqualTo(2.50m));
+            CollectionAssert.AreEquivalent(expected, sut.Items);
         }
     }
 }

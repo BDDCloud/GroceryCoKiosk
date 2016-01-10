@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace GroceryCo.Kiosk.Core
 {
-    public class ProductSummaryLineItem
+    public class RegularPriceLineItem
     {
         private readonly ProductCatalog _productCatalog;
 
-        public ProductSummaryLineItem(string barcode, int quantity, ProductCatalog productCatalog)
+        public RegularPriceLineItem(string barcode, int quantity, ProductCatalog productCatalog)
         {
             _productCatalog = productCatalog;
             Barcode = barcode;

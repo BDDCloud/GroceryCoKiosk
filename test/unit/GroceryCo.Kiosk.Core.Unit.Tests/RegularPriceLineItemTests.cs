@@ -8,7 +8,7 @@ using NUnit.Framework;
 namespace GroceryCo.Kiosk.Core.Unit.Tests
 {
     [TestFixture]
-    public class ProductSummaryLineItemTests
+    public class RegularPriceLineItemTests
     {
         [Test]
         public void When_constructed()
@@ -16,7 +16,7 @@ namespace GroceryCo.Kiosk.Core.Unit.Tests
             var productCatalog = new ProductCatalog();
             productCatalog.AddProduct("apple", 0.75m);
             productCatalog.AddProduct("banana", 1.00m);
-            var sut = new ProductSummaryLineItem("apple", 2, productCatalog);
+            var sut = new RegularPriceLineItem("apple", 2, productCatalog);
 
             Assert.That(sut.Barcode, Is.EqualTo("apple"));
             Assert.That(sut.Quantity, Is.EqualTo(2));

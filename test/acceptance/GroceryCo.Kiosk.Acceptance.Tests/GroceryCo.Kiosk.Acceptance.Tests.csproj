@@ -62,6 +62,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>02 - checkout with no promotion.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\03 - checkout with quantity discount.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>03 - checkout with quantity discount.feature</DependentUpon>
+    </Compile>
     <Compile Include="Infrastructure\CommandLineApp.cs" />
     <Compile Include="Infrastructure\CommandLineResults.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,6 +86,10 @@
     <None Include="Features\02 - checkout with no promotion.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>02 - checkout with no promotion.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\03 - checkout with quantity discount.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>03 - checkout with quantity discount.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

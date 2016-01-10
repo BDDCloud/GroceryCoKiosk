@@ -30,5 +30,19 @@ namespace GroceryCo.Kiosk.Core.Unit.Tests
             Assert.True(sut.Products.First(p => p.Barcode == "apple").Price == 0.75m);
             Assert.True(sut.Products.First(p => p.Barcode == "banana").Price == 1.00m);
         }
+
+        [Test]
+        public void When_quantity_discount_is_added()
+        {
+            var sut = new ProductCatalog();
+
+            sut.AddQuantityDiscount("apple", 3, 2.00m);
+
+            Assert.That(sut.QuantityDiscounts.Count(), Is.EqualTo(1));
+            Assert.True(sut.QuantityDiscounts.First(p => p.Barcode == "apple").DiscountPrice == 2.00m);
+            Assert.True(sut.QuantityDiscounts.First(p => p.Barcode == "apple").DiscountQuantity == 3.00m);
+        }
+
+       
     }
 }
