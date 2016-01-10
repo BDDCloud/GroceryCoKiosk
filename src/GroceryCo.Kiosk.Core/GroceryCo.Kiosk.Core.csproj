@@ -40,9 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdditionalItemDiscount.cs" />
     <Compile Include="Bill.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductCatalog.cs" />
+    <Compile Include="QuantityDiscount.cs" />
     <Compile Include="QuantityDiscountLineItem.cs" />
     <Compile Include="RegularPriceLineItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

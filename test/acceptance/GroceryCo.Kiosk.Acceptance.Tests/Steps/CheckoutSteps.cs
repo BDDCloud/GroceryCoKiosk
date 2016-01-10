@@ -44,7 +44,7 @@ namespace GroceryCo.Kiosk.Acceptance.Tests.Steps
         {
             foreach (var promotion in AdditionalItemPromotions)
             {
-                File.AppendAllText(filename, $"ADDITIONAL_ITEM_DISCOUNT, {promotion.Barcode}, {promotion.BuyQuantity}, {promotion.HowManyFree}\n");
+                File.AppendAllText(filename, $"ADDITIONAL_ITEM_DISCOUNT, {promotion.Barcode}, {promotion.BuyQuantity}, {promotion.HowManyDiscounted}, {promotion.DiscountRate}\n");
             }
         }
 

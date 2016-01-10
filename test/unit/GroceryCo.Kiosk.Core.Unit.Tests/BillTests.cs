@@ -57,5 +57,20 @@ namespace GroceryCo.Kiosk.Core.Unit.Tests
             Assert.That(sut.RegularPricedLineItems.Count(), Is.EqualTo(1));
             Assert.That(sut.QuantityDiscountLineItems.Count(), Is.EqualTo(0));
         }
+
+        [Test]
+        public void When_constructed_with_applicable_additional_item_discount()
+        {
+            var productCatalog = new ProductCatalog();
+            productCatalog.AddProduct("apple", 0.75m);
+            productCatalog.AddProduct("banana", 1.00m);
+            productCatalog.AddAdditionalItemDiscount("apple", 1, 1, 100);
+            var sut = new Bill(new List<string>() { "apple", "banana", "apple", "apple", "apple", "apple" }, productCatalog);
+
+            Assert.That(sut.Total, Is.EqualTo(3.25m));
+            Assert.That(sut.RegularPricedLineItems.Count(), Is.EqualTo(2));
+            Assert.That(sut.RegularPricedLineItems.ElementAt(0).Price, Is.EqualTo(0.75m));
+            Assert.That(sut.RegularPricedLineItems.ElementAt(0).Note, Is.EqualTo("***Discount on apple: Buy 1 apple get 1 at $0.00, New Price $2.25, Savings $1.50"));
+        }
     }
 }

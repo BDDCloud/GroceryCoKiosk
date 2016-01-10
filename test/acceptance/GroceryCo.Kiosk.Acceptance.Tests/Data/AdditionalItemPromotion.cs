@@ -4,6 +4,7 @@ namespace GroceryCo.Kiosk.Acceptance.Tests.Data
     {
         public string Barcode { get; set; }
         public int BuyQuantity { get; set; }
-        public double HowManyFree { get; set; }
+        public int HowManyDiscounted { get; set; }
+        public double DiscountRate { get; set; }
     }
 }

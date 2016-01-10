@@ -29,7 +29,7 @@ namespace GroceryCo.Kiosk.Core
 
         private void CalculateTotal()
         {
-            Total = RegularPricedLineItems.Sum(l => l.SubTotal) + QuantityDiscountLineItems.Sum(l => l.SubTotal);
+            Total = RegularPricedLineItems.Sum(l => l.DiscountedSubTotal) + QuantityDiscountLineItems.Sum(l => l.SubTotal);
         }
 
         private void SetupItemQuantities()

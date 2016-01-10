@@ -22,6 +22,12 @@ namespace GroceryCo.Kiosk.Acceptance.Tests.Steps
             base.AdditionalItemPromotions = new List<AdditionalItemPromotion>();
         }
 
+        [Given("I have no quantity discounts")]
+        public void HaveNoQauntityDiscounts()
+        {
+            base.QuantityPromotions = new List<QuantityPromotion>();
+        }
+
         [Given("I have quantity discounts")]
         public void HaveQuantityDiscounts(Table discounts)
         {
@@ -29,6 +35,16 @@ namespace GroceryCo.Kiosk.Acceptance.Tests.Steps
             foreach (var row in discounts.Rows)
             {
                 QuantityPromotions.Add(new QuantityPromotion() { Barcode = row[0], DiscountQuantity = int.Parse(row[1]), DiscountPrice = Decimal.Parse(row[2]) });
+            }
+        }
+
+        [Given("I have additional item discounts")]
+        public void HaveAdditionalItemDiscounts(Table discounts)
+        {
+            base.AdditionalItemPromotions = new List<AdditionalItemPromotion>();
+            foreach (var row in discounts.Rows)
+            {
+                AdditionalItemPromotions.Add(new AdditionalItemPromotion() { Barcode = row[0], BuyQuantity = int.Parse(row[1]), HowManyDiscounted = int.Parse(row[2]), DiscountRate = double.Parse(row[3]) });
             }
         }
     }

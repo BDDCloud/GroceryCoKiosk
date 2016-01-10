@@ -15,6 +15,7 @@ namespace GroceryCo.Kiosk.Core
             _productCatalog = productCatalog;
             Barcode = barcode;
             Quantity = quantity;
+            Note = "";
             CalculatePriceAndSubTotal();
         }
 
@@ -22,11 +23,29 @@ namespace GroceryCo.Kiosk.Core
         {
             Price = _productCatalog.Products.Single(p => p.Barcode == Barcode).Price;
             SubTotal = Price * Quantity;
+            DiscountedSubTotal = CalculateAdditionalItemDiscount();
+        }
+
+        private decimal CalculateAdditionalItemDiscount()
+        {
+            var discount = _productCatalog.AdditionalItemDiscounts.SingleOrDefault(d => d.Barcode == Barcode);
+            var hasDiscount = discount != null;
+            var price = SubTotal;
+            if (hasDiscount)
+            {
+                var discountPriceCount = Quantity / (discount.QuantityFullPrice + discount.QuantityDiscounted) * discount.QuantityDiscounted;
+                price = Quantity*Price - discountPriceCount*(decimal) discount.DiscountPercentage/100m*Price;
+                Note = $"***Discount on apple: Buy {discount.QuantityFullPrice} {Barcode} get {discount.QuantityDiscounted} at {(Price * (100m - (decimal)discount.DiscountPercentage) / 100m):C2}, New Price {price:C2}, Savings {(SubTotal - price):C2}";
+            }
+
+            return price;
         }
 
         public string Barcode { get; }
+        public string Note { get; private set; }
         public int Quantity { get; }
         public decimal SubTotal { get; private set; }
+        public decimal DiscountedSubTotal { get; private set; }
         public decimal Price { get; private set; }
     }
 }

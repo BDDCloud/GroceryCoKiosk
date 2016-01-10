@@ -44,6 +44,14 @@ namespace GroceryCo.Kiosk.Console
                     var discountPrice = Convert.ToDecimal(parts[3]);
                     productCatalog.AddQuantityDiscount(barcode, quantity, discountPrice);
                 }
+                else if (parts[0] == "ADDITIONAL_ITEM_DISCOUNT")
+                {
+                    var barcode = parts[1].Trim();
+                    var quantity = Convert.ToInt32(parts[2]);
+                    var quantityDiscounted = Convert.ToInt32(parts[3]);
+                    var dicountPercentage = Convert.ToDouble(parts[4]);
+                    productCatalog.AddAdditionalItemDiscount(barcode, quantity, quantityDiscounted, dicountPercentage);
+                }
             }
 
             var transaction = new CheckoutTransaction(productCatalog);
