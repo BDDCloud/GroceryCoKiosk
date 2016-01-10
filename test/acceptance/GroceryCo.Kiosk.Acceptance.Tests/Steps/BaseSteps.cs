@@ -7,14 +7,6 @@ namespace GroceryCo.Kiosk.Acceptance.Tests.Steps
 {
     public class BaseSteps
     {
-        public BaseSteps()
-        {
-            Products = new List<Product>();
-            AdditionalItemPromotions = new List<AdditionalItemPromotion>();
-            QuantityPromotions = new List<QuantityPromotion>();
-            Cart = new Cart();
-        }
-
         public List<Product> Products
         {
             get { return ScenarioContext.Current.Get<List<Product>>(); }

@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace GroceryCo.Kiosk.Acceptance.Tests.Infrastructure
 {
@@ -10,8 +13,7 @@ namespace GroceryCo.Kiosk.Acceptance.Tests.Infrastructure
 
         static CommandLineApp()
         {
-            //MAKE THIS RELATIVE INSTEAD OF HARD CODED
-               _applicationPath = @"C:\Projects\GroceryCoKiosk\test\acceptance\GroceryCo.Kiosk.Acceptance.Tests\bin\Debug\GroceryCo.Kiosk.Console.exe";
+            _applicationPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "GroceryCo.Kiosk.Console.exe");
         }
 
         /// <summary>

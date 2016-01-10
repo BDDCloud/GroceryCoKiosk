@@ -51,7 +51,7 @@ namespace GroceryCo.Kiosk.Acceptance.Tests.Steps
         {
             foreach (var promotion in QuantityPromotions)
             {
-                File.WriteAllText(filename, $"QUANTITY_DISCOUNT, #{promotion.Barcode}, #{promotion.DiscountQuantity}, #{promotion.DiscountPrice}");
+                File.AppendAllText(filename, $"QUANTITY_DISCOUNT, {promotion.Barcode}, {promotion.DiscountQuantity}, #{promotion.DiscountPrice}\n");
             }
         }
 
@@ -59,7 +59,7 @@ namespace GroceryCo.Kiosk.Acceptance.Tests.Steps
         {
             foreach (var product in Products)
             {
-                File.WriteAllText(filename, $"PRODUCT, #{product.Barcode}, #{product.Price}");
+                File.AppendAllText(filename, $"PRODUCT, {product.Barcode}, {product.Price}\n");
             }
         }
 

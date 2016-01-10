@@ -43,11 +43,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckoutBootStrap.cs" />
+    <Compile Include="ConsoleWriter.cs" />
+    <Compile Include="IConsole.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReceiptGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GroceryCo.Kiosk.Core\GroceryCo.Kiosk.Core.csproj">
+      <Project>{a94b91ba-b63d-4c9c-80e1-5152dd257eae}</Project>
+      <Name>GroceryCo.Kiosk.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

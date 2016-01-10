@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroceryCo.Kiosk.Console", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroceryCo.Kiosk.Core", "src\GroceryCo.Kiosk.Core\GroceryCo.Kiosk.Core.csproj", "{A94B91BA-B63D-4C9C-80E1-5152DD257EAE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroceryCo.Kiosk.Core.Unit.Tests", "test\unit\GroceryCo.Kiosk.Core.Unit.Tests\GroceryCo.Kiosk.Core.Unit.Tests.csproj", "{E802BFE0-53CE-4AC8-A274-75667BBFE5C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{A94B91BA-B63D-4C9C-80E1-5152DD257EAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A94B91BA-B63D-4C9C-80E1-5152DD257EAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A94B91BA-B63D-4C9C-80E1-5152DD257EAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E802BFE0-53CE-4AC8-A274-75667BBFE5C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E802BFE0-53CE-4AC8-A274-75667BBFE5C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E802BFE0-53CE-4AC8-A274-75667BBFE5C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E802BFE0-53CE-4AC8-A274-75667BBFE5C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,5 +54,6 @@ Global
 		{4AA220EC-FE91-4A90-A06A-07C179550F9D} = {3F592F44-213C-4B8A-93FD-F2ED1528A4E1}
 		{B09962A1-8324-4652-9B6A-AFDD53C53923} = {4AA220EC-FE91-4A90-A06A-07C179550F9D}
 		{A8867840-DE9F-476B-9953-10C707918E71} = {472BCA98-9528-4671-ABFA-390576C3F74B}
+		{E802BFE0-53CE-4AC8-A274-75667BBFE5C4} = {472BCA98-9528-4671-ABFA-390576C3F74B}
 	EndGlobalSection
 EndGlobal

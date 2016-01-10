@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.IO;
@@ -15,13 +14,9 @@ namespace GroceryCo.Kiosk.Console
         {
             var cartFile = args[0];
             var productCatalogFile = args[1];
-
-            var items = File.ReadAllLines(cartFile);
-            if (items.Length == 0)
-            {
-                System.Console.WriteLine("Error cart is empty");
-                return;
-            }
+            
+            var bootstrap = new CheckoutBootStrap(File.ReadAllLines(cartFile), File.ReadAllLines(productCatalogFile), new ConsoleWriter());
+            bootstrap.Begin();
         }
     }
 }
