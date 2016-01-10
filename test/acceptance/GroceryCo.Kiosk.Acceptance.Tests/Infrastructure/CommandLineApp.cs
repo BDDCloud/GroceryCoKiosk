@@ -10,7 +10,8 @@ namespace GroceryCo.Kiosk.Acceptance.Tests.Infrastructure
 
         static CommandLineApp()
         {
-            _applicationPath = @"GroceryCo.Kiosk.Console.exe";
+            //MAKE THIS RELATIVE INSTEAD OF HARD CODED
+               _applicationPath = @"C:\Projects\GroceryCoKiosk\test\acceptance\GroceryCo.Kiosk.Acceptance.Tests\bin\Debug\GroceryCo.Kiosk.Console.exe";
         }
 
         /// <summary>
@@ -18,9 +19,9 @@ namespace GroceryCo.Kiosk.Acceptance.Tests.Infrastructure
         /// </summary>
         private const int WaitTimeInMs = 15000;
 
-        public static IEnumerable<string> Run(string cartFile, string pricesAndPromotionsFile)
+        public static CommandLineResults Run(string cartFile, string productCatalogFile)
         {
-            var arguments = $"\"#{cartFile}\" \"#{pricesAndPromotionsFile}\"";
+            var arguments = $"\"{cartFile}\" \"{productCatalogFile}\"";
             var processStartInfo = new ProcessStartInfo(_applicationPath, arguments)
             {
                 CreateNoWindow = true,
@@ -34,7 +35,9 @@ namespace GroceryCo.Kiosk.Acceptance.Tests.Infrastructure
             var output = process.StandardOutput.ReadToEnd();
 
             var lines = output.Split(new[] { "\r\n" }, StringSplitOptions.None);
-            return lines;
+            var results = new CommandLineResults();
+            results.AddRange(lines);
+            return results;
         }
     }
 }

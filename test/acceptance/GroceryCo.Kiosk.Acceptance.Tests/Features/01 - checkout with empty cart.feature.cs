@@ -66,18 +66,18 @@ namespace GroceryCo.Kiosk.Acceptance.Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("When checkout with no items and no prices in the system")]
-        public virtual void WhenCheckoutWithNoItemsAndNoPricesInTheSystem()
+        [NUnit.Framework.DescriptionAttribute("When checkout with no items and an empty product catalog")]
+        public virtual void WhenCheckoutWithNoItemsAndAnEmptyProductCatalog()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When checkout with no items and no prices in the system", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When checkout with no items and an empty product catalog", ((string[])(null)));
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line 7
  testRunner.Given("I have no prices in the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 8
- testRunner.And("I have no promotions in the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("I have no promotions in the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 9
- testRunner.And("my cart is empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("my cart is empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 10
  testRunner.When("I checkout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 11
