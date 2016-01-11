@@ -8,12 +8,14 @@ namespace GroceryCo.Kiosk.Core
     {
         private readonly IList<string> _items;
         private readonly ProductCatalog _productCatalog;
-        private List<RegularPriceLineItem> _lineItems;
+        private readonly Promotions _promotions;
+        private List<LineItem> _lineItems;
 
-        public Bill(IList<string> items, ProductCatalog productCatalog)
+        public Bill(IList<string> items, ProductCatalog productCatalog, Promotions promotions)
         {
             _items = items;
             _productCatalog = productCatalog;
+            _promotions = promotions;
             CalculateBill();
         }
 
@@ -30,14 +32,14 @@ namespace GroceryCo.Kiosk.Core
 
         private void CreateLineItems()
         {
-            _lineItems = new List<RegularPriceLineItem>();    
+            _lineItems = new List<LineItem>();    
             foreach (var itemQuantity in _items.GroupBy(i => i, i => i, (k, j) => new Tuple<string, int>(k, j.Count())))
             {
-                _lineItems.Add(new RegularPriceLineItem(itemQuantity.Item1, itemQuantity.Item2, _productCatalog));   
+                _lineItems.Add(new LineItem(itemQuantity.Item1, itemQuantity.Item2, _productCatalog, _promotions));   
             }
         }
 
-        public IEnumerable<RegularPriceLineItem> LineItems => _lineItems;
+        public IEnumerable<LineItem> LineItems => _lineItems;
         public decimal Total { get; private set; }
     }
 }

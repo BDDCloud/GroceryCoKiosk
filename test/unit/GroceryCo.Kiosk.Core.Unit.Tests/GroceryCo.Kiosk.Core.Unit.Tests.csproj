@@ -50,6 +50,10 @@
   <ItemGroup>
     <Compile Include="BillTests.cs" />
     <Compile Include="CheckoutTransactionTests.cs" />
+    <Compile Include="PromotionalDiscountTest.cs" />
+    <Compile Include="PromotionRules\QuantityDiscountRuleTests.cs" />
+    <Compile Include="PromotionRules\AdditionalItemDiscountRuleTests.cs" />
+    <Compile Include="PromotionsTests.cs" />
     <Compile Include="QuantityDiscountTests.cs" />
     <Compile Include="RegularPriceLineItemTests.cs" />
     <Compile Include="ProductCatalogTests.cs" />

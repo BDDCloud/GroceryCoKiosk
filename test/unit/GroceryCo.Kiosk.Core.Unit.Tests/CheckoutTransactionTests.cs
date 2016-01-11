@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GroceryCo.Kiosk.Core.PromotionRules;
 using NUnit.Framework;
 
 namespace GroceryCo.Kiosk.Core.Unit.Tests
@@ -14,7 +15,7 @@ namespace GroceryCo.Kiosk.Core.Unit.Tests
         public void When_checkout_transaction_is_created()
         {
             var productCatalog = new ProductCatalog();
-            var sut = new CheckoutTransaction(productCatalog);
+            var sut = new CheckoutTransaction(productCatalog, new Promotions(new List<IPromotionalDiscountRule>()));
 
             Assert.That(sut.Bill.Total, Is.EqualTo(0));
         }
@@ -26,7 +27,7 @@ namespace GroceryCo.Kiosk.Core.Unit.Tests
             var productCatalog = new ProductCatalog();
             productCatalog.AddProduct("apple", 0.75m);
             productCatalog.AddProduct("banana", 1.00m);
-            var sut = new CheckoutTransaction(productCatalog);
+            var sut = new CheckoutTransaction(productCatalog, new Promotions(new List<IPromotionalDiscountRule>()));
             sut.AddItem("apple");
             sut.AddItem("banana");
             sut.AddItem("apple");

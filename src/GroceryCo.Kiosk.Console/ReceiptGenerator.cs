@@ -26,8 +26,8 @@ namespace GroceryCo.Kiosk.Console
             var output = "";
             if (lineItem != null)
             {
-                var note = lineItem.Note + (string.IsNullOrEmpty(lineItem.Note) ? "" : "\n"); 
-                output = $"{lineItem.Quantity} {lineItem.Barcode} @ {lineItem.Price:C2} is {lineItem.SubTotal:C2}\n{note}";
+                var note = lineItem.DiscountNote + (string.IsNullOrEmpty(lineItem.DiscountNote) ? "" : "\n"); 
+                output = $"{lineItem.Quantity} {lineItem.Barcode} @ {lineItem.PricePerUnit:C2} is {lineItem.SubTotal:C2}\n{note}";
             }
             return output;
         }

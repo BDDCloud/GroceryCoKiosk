@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using GroceryCo.Kiosk.Core;
+using GroceryCo.Kiosk.Core.PromotionRules;
 
 namespace GroceryCo.Kiosk.Console
 {
@@ -54,7 +55,8 @@ namespace GroceryCo.Kiosk.Console
                 }
             }
 
-            var transaction = new CheckoutTransaction(productCatalog);
+            var promotionalDiscountRules = new List<IPromotionalDiscountRule>() { new AdditionalItemDiscountRule(productCatalog), new QuantityDiscountRule(productCatalog) };
+            var transaction = new CheckoutTransaction(productCatalog, new Promotions(promotionalDiscountRules));
             foreach (var cartLine in _cartData)
             {
                 transaction.AddItem(cartLine);

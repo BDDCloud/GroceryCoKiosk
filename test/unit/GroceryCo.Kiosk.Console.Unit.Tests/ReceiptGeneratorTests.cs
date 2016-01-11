@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GroceryCo.Kiosk.Core;
+using GroceryCo.Kiosk.Core.PromotionRules;
 using NUnit.Framework;
 
 namespace GroceryCo.Kiosk.Console.Unit.Tests
@@ -18,7 +19,7 @@ namespace GroceryCo.Kiosk.Console.Unit.Tests
             var productCatalog = new ProductCatalog();
             productCatalog.AddProduct("apple", 0.75m);
             productCatalog.AddProduct("banana", 1.00m);
-            var transaction = new CheckoutTransaction(productCatalog);
+            var transaction = new CheckoutTransaction(productCatalog, new Promotions(new List<IPromotionalDiscountRule>()));
             transaction.AddItem("apple");
             transaction.AddItem("banana");
             transaction.AddItem("apple");
@@ -36,7 +37,7 @@ namespace GroceryCo.Kiosk.Console.Unit.Tests
             productCatalog.AddProduct("apple", 0.75m);
             productCatalog.AddProduct("banana", 1.00m);
             productCatalog.AddQuantityDiscount("apple", 3, 2.00m);
-            var transaction = new CheckoutTransaction(productCatalog);
+            var transaction = new CheckoutTransaction(productCatalog, new Promotions(new List<IPromotionalDiscountRule>() { new AdditionalItemDiscountRule(productCatalog), new QuantityDiscountRule(productCatalog) }));
             transaction.AddItem("apple");
             transaction.AddItem("banana");
             transaction.AddItem("apple");
@@ -58,7 +59,7 @@ namespace GroceryCo.Kiosk.Console.Unit.Tests
             productCatalog.AddProduct("apple", 0.75m);
             productCatalog.AddProduct("banana", 1.00m);
             productCatalog.AddAdditionalItemDiscount("apple", 1, 1, 100);
-            var transaction = new CheckoutTransaction(productCatalog);
+            var transaction = new CheckoutTransaction(productCatalog, new Promotions(new List<IPromotionalDiscountRule>() { new AdditionalItemDiscountRule(productCatalog), new QuantityDiscountRule(productCatalog)}));
             transaction.AddItem("apple");
             transaction.AddItem("banana");
             transaction.AddItem("apple");
